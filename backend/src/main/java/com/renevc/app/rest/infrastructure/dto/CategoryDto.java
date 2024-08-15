@@ -1,10 +1,9 @@
 package com.renevc.app.rest.infrastructure.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.annotation.Nullable;
+import lombok.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,8 +21,8 @@ public class CategoryDto {
     private String name;
 
     private String description;
-
-    @JsonIgnore
+    //Rebice user pero no lo muestra
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private UserDto user;
 
     private List<TodoDto> todoList;
