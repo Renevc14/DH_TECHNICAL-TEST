@@ -1,7 +1,7 @@
 package com.renevc.app.rest.infrastructure.handlers;
 
-import com.renevc.app.rest.exception.EntityNotFoundException;
-import com.renevc.app.rest.exception.InvalidEntityException;
+import com.renevc.app.rest.domain.exception.EntityNotFoundException;
+import com.renevc.app.rest.domain.exception.InvalidEntityException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

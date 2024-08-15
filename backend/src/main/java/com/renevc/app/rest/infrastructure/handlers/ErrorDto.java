@@ -1,6 +1,6 @@
 package com.renevc.app.rest.infrastructure.handlers;
 
-import com.renevc.app.rest.exception.ErrorCodes;
+import com.renevc.app.rest.domain.exception.ErrorCodes;
 import lombok.*;
 
 import java.util.ArrayList;

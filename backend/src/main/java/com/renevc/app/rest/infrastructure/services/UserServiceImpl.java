@@ -1,9 +1,9 @@
 package com.renevc.app.rest.infrastructure.services;
 
 import com.renevc.app.rest.domain.services.UserService;
-import com.renevc.app.rest.exception.EntityNotFoundException;
-import com.renevc.app.rest.exception.ErrorCodes;
-import com.renevc.app.rest.exception.InvalidEntityException;
+import com.renevc.app.rest.domain.exception.EntityNotFoundException;
+import com.renevc.app.rest.domain.exception.ErrorCodes;
+import com.renevc.app.rest.domain.exception.InvalidEntityException;
 import com.renevc.app.rest.infrastructure.dto.UserDto;
 import com.renevc.app.rest.infrastructure.repositories.UserRepository;
 import com.renevc.app.rest.infrastructure.validators.UserValidator;

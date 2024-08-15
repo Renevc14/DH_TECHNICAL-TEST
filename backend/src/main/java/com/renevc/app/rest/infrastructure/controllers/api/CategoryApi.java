@@ -26,9 +26,9 @@ public interface CategoryApi {
     @GetMapping(value = APP_ROOT + "/categories/all", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<List<CategoryDto>> getAllCategories();
 
-    @GetMapping(value = APP_ROOT + "/categories/todos/{id:.+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = APP_ROOT + "/categories/todos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<List<TodoDto>> getAllTodoByCategoriesId(
-           Long id
+            @PathVariable("id") Long id
     );
 
     @GetMapping(value = APP_ROOT + "/categories/todos/today/{userId:.+}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -41,14 +41,14 @@ public interface CategoryApi {
             @PathParam("id") Long id
     );
 
-    @GetMapping(value = APP_ROOT + "/categories/{id:.+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = APP_ROOT + "/categories/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 
     ResponseEntity<CategoryDto> getCategory(
-            @PathParam("id") Long id
+            @PathVariable("id") Long id
     );
 
-    @DeleteMapping(value = APP_ROOT + APP_ROOT + "/categories/delete/{id:.+}")
-    ResponseEntity deleteCategory(
-            @PathParam("id") Long id
+    @DeleteMapping(value = APP_ROOT + APP_ROOT + "/categories/delete/{id}")
+    ResponseEntity<CategoryDto> deleteCategory(
+            @PathVariable("id") Long id
     );
 }

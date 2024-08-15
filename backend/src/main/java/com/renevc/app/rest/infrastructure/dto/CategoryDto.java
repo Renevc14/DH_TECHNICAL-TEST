@@ -1,5 +1,6 @@
 package com.renevc.app.rest.infrastructure.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class CategoryDto {
 
     private String description;
 
+    @JsonIgnore
     private UserDto user;
 
     private List<TodoDto> todoList;

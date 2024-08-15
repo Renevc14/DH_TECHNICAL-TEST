@@ -28,7 +28,7 @@ public class UserDto {
 
     private String password;
 
-    @JsonIgnore
+//    @JsonIgnore
     private List<CategoryDto> category;
 
     public static UserEntity toEntity(UserDto userDto) {

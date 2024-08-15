@@ -52,6 +52,7 @@ public class TodoDto {
                 .startDate(todo.getStartDate())
                 .done(todo.isDone())
                 .favorite(todo.isFavorite())
+                .category(CategoryDto.fromEntity(todo.getCategory()))
                 .build();
     }
 }
