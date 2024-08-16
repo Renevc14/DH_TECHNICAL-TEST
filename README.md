@@ -2,6 +2,8 @@
 
 # Technical Test for Digital Harbor
 
+The video and some images of the project are in the resources folder.
+
 ![](http://https://github.com/Renevc14/DH_TECHNICAL-TEST/blob/main/Recusos/frontend.png)
 ### Features
 
@@ -19,3 +21,4 @@ Frontend:
 
                     
 > npm install && ng serve -o
+
