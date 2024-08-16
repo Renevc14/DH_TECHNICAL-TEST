@@ -14,8 +14,8 @@ Backend:
 
 Frontend:
 -Model
+
 ###Running the frontend
 
                     
-> npm install
-	ng serve -o
+> npm install && ng serve -o
