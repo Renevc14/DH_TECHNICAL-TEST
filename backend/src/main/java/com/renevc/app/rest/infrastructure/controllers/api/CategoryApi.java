@@ -31,15 +31,8 @@ public interface CategoryApi {
             @PathVariable("id") Long id
     );
 
-    @GetMapping(value = APP_ROOT + "/categories/todos/today/{userId:.+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<List<TodoDto>> getAllTodoByCategoriesForToday(
-          @PathParam("userId") Long userId
-    );
-
-    @GetMapping(value = APP_ROOT + "/categories/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<List<CategoryDto>> getAllCategoriesByUserId(
-            @PathParam("id") Long id
-    );
+    @GetMapping(value = APP_ROOT + "/categories/todos/today", produces = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity<List<TodoDto>> getAllTodoByCategoriesForToday();
 
     @GetMapping(value = APP_ROOT + "/categories/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 
@@ -47,7 +40,7 @@ public interface CategoryApi {
             @PathVariable("id") Long id
     );
 
-    @DeleteMapping(value = APP_ROOT + APP_ROOT + "/categories/delete/{id}")
+    @DeleteMapping(value = APP_ROOT + "/categories/delete/{id}")
     ResponseEntity<CategoryDto> deleteCategory(
             @PathVariable("id") Long id
     );

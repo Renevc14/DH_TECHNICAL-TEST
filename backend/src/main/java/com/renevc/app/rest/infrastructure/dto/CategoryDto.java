@@ -21,16 +21,12 @@ public class CategoryDto {
     private String name;
 
     private String description;
-    //Rebice user pero no lo muestra
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private UserDto user;
-
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<TodoDto> todoList;
 
     public static CategoryEntity toEntity(CategoryDto categoryDto) {
         CategoryEntity category = new CategoryEntity();
 
-        category.setUser(UserDto.toEntity(categoryDto.getUser()));
         category.setId(categoryDto.getId());
         category.setName(categoryDto.getName());
         category.setDescription(categoryDto.getDescription());

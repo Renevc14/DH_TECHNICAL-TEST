@@ -6,9 +6,7 @@ import com.renevc.app.rest.domain.exception.ErrorCodes;
 import com.renevc.app.rest.domain.exception.InvalidEntityException;
 import com.renevc.app.rest.infrastructure.dto.CategoryDto;
 import com.renevc.app.rest.infrastructure.entities.CategoryEntity;
-import com.renevc.app.rest.infrastructure.entities.UserEntity;
 import com.renevc.app.rest.infrastructure.repositories.CategoryRepository;
-import com.renevc.app.rest.infrastructure.repositories.UserRepository;
 import com.renevc.app.rest.infrastructure.validators.CategoryValidator;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,8 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
-    @Autowired
-    private UserRepository userRepository;
+
 
     @Override
     public CategoryDto save(CategoryDto category) {
@@ -35,11 +32,6 @@ public class CategoryServiceImpl implements CategoryService {
             log.error("Category is not valid {}", category);
             throw new InvalidEntityException("Category is not valid", ErrorCodes.CATEGORY_NOT_VALID, errors);
         }
-        UserEntity entity = userRepository.findById(category.getUser().getId())
-                .orElseThrow(() -> new EntityNotFoundException("No User found with ID = " + category.getUser().getId(), ErrorCodes.USER_NOT_FOUND));
-        CategoryEntity categoryEntity = CategoryDto.toEntity(category);
-        categoryEntity.setUser(entity);
-
 
         return CategoryDto.fromEntity(categoryRepository.save(CategoryDto.toEntity(category)));
     }
@@ -63,12 +55,6 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryDto;
     }
 
-    @Override
-    public List<CategoryDto> findAllByUserId(Long userId) {
-        return categoryRepository.findCategoryByUserId(userId).stream()
-                .map(CategoryDto::fromEntity)
-                .collect(Collectors.toList());
-    }
 
     @Override
     public void delete(Long id) {
@@ -80,9 +66,9 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<CategoryDto> getAllTodoByCategoriesForToday(Long userId) {
+    public List<CategoryDto> getAllTodoByCategoriesForToday() {
         return categoryRepository.getAllTodoByCategoriesForToday(ZonedDateTime.now().withHour(0).withMinute(0),
-                ZonedDateTime.now().withHour(23).withMinute(59), userId)
+                ZonedDateTime.now().withHour(23).withMinute(59))
                 .stream()
                 .map(CategoryDto::fromEntity)
                 .collect(Collectors.toList());

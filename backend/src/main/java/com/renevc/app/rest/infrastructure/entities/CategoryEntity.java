@@ -24,11 +24,6 @@ public class CategoryEntity implements Serializable {
 
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    @JsonIgnore
-    private UserEntity user;
-
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<TodoEntity> todoList;
 }

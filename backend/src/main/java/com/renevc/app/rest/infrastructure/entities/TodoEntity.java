@@ -26,7 +26,7 @@ public class TodoEntity implements Serializable {
 
     private ZonedDateTime startDate;
 
-    private boolean done;
+    private String status;
 
     private boolean favorite;
 

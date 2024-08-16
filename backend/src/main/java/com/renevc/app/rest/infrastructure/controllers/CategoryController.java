@@ -44,10 +44,6 @@ public class CategoryController implements CategoryApi {
         return new ResponseEntity<>(todoService.findByCategory(id), HttpStatus.OK);
     }
 
-    @Override
-    public ResponseEntity<List<CategoryDto>> getAllCategoriesByUserId(Long id) {
-        return new ResponseEntity<>(categoryService.findAllByUserId(id), HttpStatus.OK);
-    }
 
     @Override
     public ResponseEntity<CategoryDto> getCategory(Long id) {
@@ -61,7 +57,7 @@ public class CategoryController implements CategoryApi {
     }
 
     @Override
-    public ResponseEntity<List<TodoDto>> getAllTodoByCategoriesForToday(Long userId) {
-        return new ResponseEntity(categoryService.getAllTodoByCategoriesForToday(userId), HttpStatus.OK);
+    public ResponseEntity<List<TodoDto>> getAllTodoByCategoriesForToday() {
+        return new ResponseEntity(categoryService.getAllTodoByCategoriesForToday(), HttpStatus.OK);
     }
 }

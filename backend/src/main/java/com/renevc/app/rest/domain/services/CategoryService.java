@@ -13,9 +13,8 @@ public interface CategoryService {
 
     CategoryDto findById(Long id);
 
-    List<CategoryDto> findAllByUserId(Long userId);
 
     void delete(Long id);
 
-    List<CategoryDto> getAllTodoByCategoriesForToday(Long userId);
+    List<CategoryDto> getAllTodoByCategoriesForToday();
 }
