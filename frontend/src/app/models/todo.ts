@@ -5,6 +5,7 @@ export interface TodoModel {
     "startDate": string;
     "status": string;
     "favorite": boolean;
+    "editing": boolean;
 }
 
-export type FilterType = 'TODO' | 'IN_PROGRESS' | 'DONE' | 'FAVORITE' | 'ALL';
+export type FilterType = 'TODO' | 'IN_PROGRESS' | 'DONE';
