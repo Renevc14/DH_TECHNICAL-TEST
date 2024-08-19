@@ -7,4 +7,4 @@ export interface TodoModel {
     "favorite": boolean;
 }
 
-export type FilterType = 'TODO' | 'IN_PROGRESS' | 'DONE' | 'FAVORITE' | 'ALL';
+export type FilterType = 'TODO' | 'IN_PROGRESS' | 'DONE';
