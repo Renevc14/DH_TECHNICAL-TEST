@@ -13,7 +13,7 @@
 
     <ul class="todoList">
         @for (todo of todoListFiltered(); track todo.id) {
-            @if (todo.editing) {
+            @if (todo.favorite) {
                 <li class= "todo-editing">
                     <input type="text" placeholder="Editar tarea" [value]="todo.title" (keydown.enter)="saveTitleTodo(todo.id, $event)">
                 </li>

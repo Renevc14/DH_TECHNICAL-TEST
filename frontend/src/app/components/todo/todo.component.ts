@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
-import { FilterType, TodoModel } from '../../models/todo';
+import { Component, computed, OnInit, signal } from '@angular/core';
+import { FilterType, TodoModel } from '../../interfaces/todo';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -10,39 +11,29 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.css'
 })
-export class TodoComponent {
-  todoList = signal <TodoModel[]>([
-    {
-      id: 1,
-      title: 'Tarea 1',
-      description: 'Descripcion de la tarea 1',
-      startDate: '2021-06-01',
-      status: 'DONE',
-      favorite: false,
-      editing: false
-    },
-    {
-      id: 2,
-      title: 'Tarea 2',
-      description: 'Descripcion de la tarea 2',
-      startDate: '2021-06-01',
-      status: 'TODO',
-      favorite: false,
-      editing: false
+export class TodoComponent implements OnInit {
 
-    },
-    {
-      id: 3,
-      title: 'Tarea 3',
-      description: 'Descripcion de la tarea 3',
-      startDate: '2021-06-01',
-      status: 'TODO',
-      favorite: false,
-      editing: false
+  constructor(private todoService: TodoService) {}
 
-    },
-    // aqui puedo acomodar los datos de la API creo
-  ]);
+  todoList = signal<TodoModel[]>([]);
+
+
+  ngOnInit(): void {
+    this.getAllTodos();
+  }
+
+  getAllTodos() {
+    this.todoService.getAllTodos().subscribe({
+      next: (result) => {
+        this.todoList.set(result);
+      },
+      error: (err)=> {
+        console.log(err);
+      }
+
+    });
+  }
+
 
   filter = signal<FilterType>('TODO');
 
